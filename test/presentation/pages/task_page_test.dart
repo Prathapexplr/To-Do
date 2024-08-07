@@ -29,7 +29,7 @@ void main() {
     );
   }
 
-  testWidgets('should display loading indicator when state is TaskInitial',
+  testWidgets('Should display loading indicator when state is TaskInitial',
       (WidgetTester tester) async {
     when(mockTaskBloc.state).thenReturn(TaskInitial());
     when(mockTaskBloc.stream).thenAnswer((_) => Stream.value(TaskInitial()));
@@ -39,7 +39,7 @@ void main() {
     expect(find.byType(CircularProgressIndicator), findsOneWidget);
   });
 
-  testWidgets('should display list of tasks when state is TasksLoadedState',
+  testWidgets('Should display list of tasks when state is TasksLoadedState',
       (WidgetTester tester) async {
     final tasks = [
       Task(id: '1', title: 'Task 1', isCompleted: false),
@@ -55,7 +55,7 @@ void main() {
     expect(find.text('Task 2'), findsOneWidget);
   });
 
-  testWidgets('should show add task dialog when FloatingActionButton is tapped',
+  testWidgets('Should show add task dialog when FloatingActionButton is tapped',
       (WidgetTester tester) async {
     when(mockTaskBloc.state).thenReturn(const TasksLoadedState([]));
     when(mockTaskBloc.stream)
@@ -66,16 +66,16 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.byType(AlertDialog), findsOneWidget);
-    expect(find.text('Add New Task'), findsOneWidget);
+    expect(find.text('ADD NEW TASK'), findsOneWidget);
   });
 
-  testWidgets('should filter tasks', (WidgetTester tester) async {
+  testWidgets('Should filter tasks', (WidgetTester tester) async {
     when(mockTaskBloc.state).thenReturn(const TasksLoadedState([]));
     when(mockTaskBloc.stream)
         .thenAnswer((_) => Stream.value(const TasksLoadedState([])));
 
     await tester.pumpWidget(createWidgetUnderTest());
-    await tester.tap(find.byIcon(Icons.more_vert));
+    await tester.tap(find.byIcon(Icons.filter_list));
     await tester.pumpAndSettle();
     await tester.tap(find.text('Completed'));
     await tester.pumpAndSettle();

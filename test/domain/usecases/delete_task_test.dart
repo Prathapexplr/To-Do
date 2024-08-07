@@ -14,7 +14,7 @@ void main() {
 
   const String tTaskId = '1';
 
-  test('should delete the task from the repository using the task ID',
+  test('Should delete the task from the repository using the task ID',
       () async {
     when(mockTaskRepository.deleteTask(any)).thenAnswer((_) async {});
 

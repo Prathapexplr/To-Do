@@ -15,7 +15,7 @@ void main() {
 
   final tTask = Task(id: '1', title: 'Test Task');
 
-  test('should add a task to the repository', () async {
+  test('Should add a task to the repository', () async {
     when(mockTaskRepository.addTask(any)).thenAnswer((_) async {});
 
     await usecase(tTask);

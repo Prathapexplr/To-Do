@@ -17,14 +17,25 @@ class TaskList extends StatelessWidget {
       itemBuilder: (context, index) {
         final task = tasks[index];
         return ListTile(
+          contentPadding: const EdgeInsets.symmetric(vertical: 5),
           title: Text(
             task.title,
             style: TextStyle(
-              decoration: task.isCompleted ? TextDecoration.lineThrough : null,
-            ),
+                fontSize: 20,
+                color: Colors.white,
+                fontWeight: FontWeight.w600,
+                decoration:
+                    task.isCompleted ? TextDecoration.lineThrough : null,
+                decorationColor: task.isCompleted ? Colors.white : null),
           ),
           leading: Checkbox(
+            checkColor: Colors.red,
+            activeColor: Colors.white,
             value: task.isCompleted,
+            side: MaterialStateBorderSide.resolveWith(
+              (states) => const BorderSide(
+                  width: 1.0, color: Color.fromARGB(255, 244, 199, 195)),
+            ),
             onChanged: (bool? value) {
               final updatedTask = Task(
                 id: task.id,
@@ -36,6 +47,7 @@ class TaskList extends StatelessWidget {
           ),
           trailing: IconButton(
             icon: const Icon(Icons.delete),
+            color: const Color.fromARGB(255, 255, 86, 74),
             onPressed: () {
               context.read<TaskBloc>().add(DeleteTaskEvent(task.id));
             },

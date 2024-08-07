@@ -16,7 +16,7 @@ void main() {
 
   final tTask = Task(id: '1', title: 'Updated Task', isCompleted: true);
 
-  test('should update the task in the repository', () async {
+  test('Should update the task in the repository', () async {
     when(mockTaskRepository.updateTask(any)).thenAnswer((_) async => null);
 
     await usecase(tTask);

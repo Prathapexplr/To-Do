@@ -18,7 +18,7 @@ void main() {
     Task(id: '2', title: 'Task 2', isCompleted: true),
   ];
 
-  test('should get all tasks from the repository', () async {
+  test('Should get all tasks from the repository', () async {
     when(mockTaskRepository.getTasks()).thenAnswer((_) async => tTasks);
 
     final result = await usecase();
