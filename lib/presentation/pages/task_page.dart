@@ -82,8 +82,7 @@ class TaskPage extends StatelessWidget {
               onPressed: () {
                 final String title = controller.text;
                 if (title.isNotEmpty) {
-                  final task =
-                      Task(id: DateTime.now().toString(), title: title);
+                  final task = Task(id: DateTime.now().toString(), title: title);
                   context.read<TaskBloc>().add(AddTaskEvent(task));
                 }
                 Navigator.of(context).pop();

@@ -30,6 +30,7 @@ class MyApp extends StatelessWidget {
         getTasks: GetTasks(taskRepository),
       ),
       child: const MaterialApp(
+        debugShowCheckedModeBanner: false,
         home: TaskPage(),
       ),
     );
